@@ -7,6 +7,8 @@ This module is for HumHub Version 0.20 (Yii 2) and greater and cannot be used wi
 This module implements a REST api for humhub, returning the following endpoints:
 
 1. /api/api/users - returns a list of users
+1. /api/api/users?id= - returns a list of users matching the user id (note: will only return one, but still treated as a list)
+1. /api/api/users?search= - returns a list of users with username matching the search criteria
 
 
 ## Installation
