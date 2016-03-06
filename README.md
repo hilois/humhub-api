@@ -5,6 +5,7 @@ This module is for HumHub Version 0.20 (Yii 2) and greater and cannot be used wi
 ## Description
 
 This module implements a REST api for humhub, returning the following endpoints:
+
 1. /api/api/users - returns a list of users
 
 Widget works on spaces, dashboard and profile.
