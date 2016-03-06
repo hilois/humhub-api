@@ -8,7 +8,6 @@ This module implements a REST api for humhub, returning the following endpoints:
 
 1. /api/api/users - returns a list of users
 
-Widget works on spaces, dashboard and profile.
 
 ## Installation
 1. Download the module and upload it to your modules directory >yourdomain.com>protected>modules
