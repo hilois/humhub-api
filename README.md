@@ -6,6 +6,10 @@ This module is for HumHub Version 0.20 (Yii 2) and greater and cannot be used wi
 
 ## Description
 
+All api calls require an access token (user guid).  Access is limited to users with Super Admin privileges.
+
+Sample Call: http://localhost/user/search/:text?access-token=:guid
+
 This module implements a REST api for humhub, returning the following endpoints:
 
 ### User
@@ -25,7 +29,6 @@ This Module requires pretty urls to be enabled - see: https://www.humhub.org/doc
 
 ## TODO
 1. Define desired endpoints/actions
-2. Implement API key system for authentication.
 
 
 ## Authors/Module Website
