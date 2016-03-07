@@ -1,3 +1,5 @@
+# IN DEVELOPMENT - NOT READY FOR USE, WILL CHANGE AND BREAK FREQUENTLY
+
 # [HumHub](https://github.com/humhub/humhub) Api
 
 This module is for HumHub Version 0.20 (Yii 2) and greater and cannot be used with HumHub Version 0.1x (Yii 1.1)
