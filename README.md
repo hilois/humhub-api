@@ -8,15 +8,20 @@ This module is for HumHub Version 0.20 (Yii 2) and greater and cannot be used wi
 
 This module implements a REST api for humhub, returning the following endpoints:
 
-1. /api/api/users - returns a list of users
-1. /api/api/users?id= - returns a list of users matching the user id (note: will only return one, but still treated as a list)
-1. /api/api/users?search= - returns a list of users with username matching the search criteria
+### User
+
+1. /user - returns a list of users
+2. /user/:id - returns a users matching the user id 
+3. /user/search/:text - returns a list of users with username matching the search criteria
 
 
 ## Installation
 1. Download the module and upload it to your modules directory >yourdomain.com>protected>modules
 2. Rename module directory ```api``` (May not be required!)
 3. Enable module from >Admin>Modules
+
+## Requirements
+This Module requires pretty urls to be enabled - see: https://www.humhub.org/docs/guide-admin-installation.html#4-fine-tuning
 
 ## TODO
 1. Define desired endpoints/actions
