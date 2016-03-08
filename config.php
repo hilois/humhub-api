@@ -9,7 +9,16 @@ return [
         ['class' => 'humhub\modules\space\components\UrlRule'],
       	'user' => 'api/user',
       	'user/<id:\d+>' => 'api/user/view',
-      	'user/search/<search:.+>' => 'api/user/search'
+      	'user/search/<search:.+>' => 'api/user/search',
+      	'profile' => 'api/profile',
+      	'profile/<id:\d+>' => 'api/profile/view',
+      	'space' => 'api/space',
+      	'post' => 'api/post',
+      	'post/<id:\d+>' => 'api/post/view',
+      	'comment' => 'api/comment',
+      	'GET comment/<id:\d+>' => 'api/comment/view',
+      	'comment/post/<id:\d+>' => 'api/comment/post',
+      	'DELETE comment/<id:\d+>' => 'api/comment/delete',
     ],
 ];
 ?>
