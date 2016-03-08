@@ -1,4 +1,4 @@
-# IN DEVELOPMENT - NOT READY FOR USE, WILL CHANGE AND BREAK FREQUENTLY
+# IN DEVELOPMENT - MORE ENDPOINTS WILL BE ADDED FREQUENTLY
 
 # [HumHub](https://github.com/humhub/humhub) Api
 
@@ -72,7 +72,7 @@ Sample Output:
 ```
 
 
-This module implements a REST api for humhub, returning the following endpoints:
+The following endpoints are currently available.
 
 ### User
 
@@ -100,6 +100,7 @@ This module implements a REST api for humhub, returning the following endpoints:
 1. /comment - returns a list of comments
 2. /comment/:id - returns a comment matching the comment id 
 3. /comment/post/:id - returns a list of comments for a particular post id
+4. DELETE /comment/:id - deletes a comment matching the comment id
 
 ## Installation
 1. Download the module and upload it to your modules directory >yourdomain.com>protected>modules
@@ -110,7 +111,10 @@ This module implements a REST api for humhub, returning the following endpoints:
 This Module requires pretty urls to be enabled - see: https://www.humhub.org/docs/guide-admin-installation.html#4-fine-tuning
 
 ## TODO
-1. Define desired endpoints/actions
+1. Define and implement desired read only endpoints
+2. Define and implement all desired create endpoints
+3. Define and implement all desired Update endpoints
+4. Define and implement all desired Delete endpoints
 
 
 ## Authors/Module Website

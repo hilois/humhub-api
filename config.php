@@ -16,8 +16,9 @@ return [
       	'post' => 'api/post',
       	'post/<id:\d+>' => 'api/post/view',
       	'comment' => 'api/comment',
-      	'comment/<id:\d+>' => 'api/comment/view',
+      	'GET comment/<id:\d+>' => 'api/comment/view',
       	'comment/post/<id:\d+>' => 'api/comment/post',
+      	'DELETE comment/<id:\d+>' => 'api/comment/delete',
     ],
 ];
 ?>
