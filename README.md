@@ -18,8 +18,57 @@ Sample Call: http://localhost/user/search/:text?access-token=:guid
 Sample Output:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<response><Comment><id>1</id><message>Nike – Just buy it. ;Wink;</message><object_model>humhub\modules\post\models\Post</object_model><object_id>2</object_id><space_id></space_id><created_at>2016-02-16 16:44:00</created_at><created_by>2</created_by><updated_at>2016-02-16 16:44:00</updated_at><updated_by>2</updated_by></Comment><Comment><id>2</id><message>Calvin Klein – Between love and madness lies obsession.</message><object_model>humhub\modules\post\models\Post</object_model><object_id>2</object_id><space_id></space_id><created_at>2016-02-16 16:44:00</created_at><created_by>3</created_by><updated_at>2016-02-16 16:44:00</updated_at><updated_by>3</updated_by></Comment></response>
+<response>
+   <Comment>
+      <id>1</id>
+      <message>Nike – Just buy it. ;Wink;</message>
+      <object_model>humhub\modules\post\models\Post</object_model>
+      <object_id>2</object_id>
+      <space_id />
+      <created_at>2016-02-16 16:44:00</created_at>
+      <created_by>2</created_by>
+      <updated_at>2016-02-16 16:44:00</updated_at>
+      <updated_by>2</updated_by>
+   </Comment>
+   <Comment>
+      <id>2</id>
+      <message>Calvin Klein – Between love and madness lies obsession.</message>
+      <object_model>humhub\modules\post\models\Post</object_model>
+      <object_id>2</object_id>
+      <space_id />
+      <created_at>2016-02-16 16:44:00</created_at>
+      <created_by>3</created_by>
+      <updated_at>2016-02-16 16:44:00</updated_at>
+      <updated_by>3</updated_by>
+   </Comment>
+</response>
 
+```
+```json
+[
+   {
+      "id":1,
+      "message":"Nike – Just buy it. ;Wink;",
+      "object_model":"humhub\\modules\\post\\models\\Post",
+      "object_id":2,
+      "space_id":null,
+      "created_at":"2016-02-16 16:44:00",
+      "created_by":2,
+      "updated_at":"2016-02-16 16:44:00",
+      "updated_by":2
+   },
+   {
+      "id":2,
+      "message":"Calvin Klein – Between love and madness lies obsession.",
+      "object_model":"humhub\\modules\\post\\models\\Post",
+      "object_id":2,
+      "space_id":null,
+      "created_at":"2016-02-16 16:44:00",
+      "created_by":3,
+      "updated_at":"2016-02-16 16:44:00",
+      "updated_by":3
+   }
+]
 ```
 
 
