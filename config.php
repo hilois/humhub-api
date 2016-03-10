@@ -20,5 +20,15 @@ return [
       	'comment/post/<id:\d+>' => 'api/comment/post',
       	'DELETE comment/<id:\d+>' => 'api/comment/delete',
     ],
+    'events' => [
+      [
+          'class' => \humhub\modules\admin\widgets\AdminMenu::className(),
+          'event' => \humhub\modules\admin\widgets\AdminMenu::EVENT_INIT,
+          'callback' => [
+              'humhub\modules\api\Events',
+              'onAdminMenuInit'
+          ]
+      ]
+    ]
 ];
 ?>

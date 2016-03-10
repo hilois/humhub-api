@@ -11,9 +11,9 @@ the end points to create applications, implement combined logins, create AJAX we
 
 Only core module access is supported, not optional plugins.
 
-All api calls require an access token (user guid).  Access is limited to users with Super Admin privileges.
+All api calls require an access token (api_key).  Access granted via the admin panel via database authentication.
 
-Sample Call: http://localhost/user/search/:text?access-token=:guid
+Sample Call: http://localhost/user/search/:text?access_token=:api_key
 
 Sample Output:
 ```xml

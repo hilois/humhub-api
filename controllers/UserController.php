@@ -2,11 +2,11 @@
 namespace humhub\modules\api\controllers;
 
 use Yii;
-use yii\rest\ActiveController;
+use humhub\modules\api\controllers\BaseController;
 use humhub\modules\User\models\User;
 use yii\filters\auth\QueryParamAuth;
 
-class UserController extends ActiveController
+class UserController extends BaseController
 {
     public $modelClass = 'humhub\modules\User\models\User';
 
@@ -23,18 +23,5 @@ class UserController extends ActiveController
         }
 
         return $query->all();
-    }
-
-    public function behaviors()
-    {
-        $behaviors = parent::behaviors();
-        $behaviors['authenticator'] = [
-            'class' => QueryParamAuth::className(),
-        ];
-        $behaviors['acl'] = [
-            'class' => \humhub\components\behaviors\AccessControl::className(),
-            'adminOnly' => true
-        ];
-        return $behaviors;
     }
 }
