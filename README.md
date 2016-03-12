@@ -76,31 +76,32 @@ The following endpoints are currently available.
 
 ### User
 
-1. /user - returns a list of users
-2. /user/:id - returns a user matching the user id 
-3. /user/search/:text - returns a list of users with username matching the search criteria
+1. /api/user - returns a list of users
+2. /api/user/:id - returns a user matching the user id 
+3. /api/user/search/:text - returns a list of users with username matching the search criteria
+4. /api/user/login/:username/:password - not technically a REST call, but used to authenticate a user and get its id for use in REST calls.
 
 ### Profile
 
-1. /profile - returns a list of user profiles
-2. /profile/:id - returns a profile for the user id 
+1. /api/profile - returns a list of user profiles
+2. /api/profile/:id - returns a profile for the user id 
 
 ### Space
 
-1. /space - returns a list of spaces
-2. /space/:id - returns a space matching the space id 
+1. /api/space - returns a list of spaces
+2. /api/space/:id - returns a space matching the space id 
 
 ### Post
 
-1. /post - returns a list of posts
-2. /post/:id - returns a post matching the post id 
+1. /api/post - returns a list of posts
+2. /api/post/:id - returns a post matching the post id 
 
 ### Comment
 
-1. /comment - returns a list of comments
-2. /comment/:id - returns a comment matching the comment id 
-3. /comment/post/:id - returns a list of comments for a particular post id
-4. DELETE /comment/:id - deletes a comment matching the comment id
+1. /api/comment - returns a list of comments
+2. /api/comment/:id - returns a comment matching the comment id 
+3. /api/comment/post/:id - returns a list of comments for a particular post id
+4. DELETE /api/comment/:id - deletes a comment matching the comment id
 
 ## Installation
 1. Download the module and upload it to your modules directory >yourdomain.com>protected>modules
