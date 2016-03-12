@@ -16,9 +16,12 @@ class BaseController extends ActiveController
         }
         $req = Yii::$app->request;
         parse_str($req->queryString);
+        if (!isset($access_token)) {
+            throw new UnauthorizedHttpException('Access unavailable without access_token.', 401);
+        }
         if (ApiUser::findIdentityByAccessToken($access_token)) {
             return true;
         } 
-       throw new UnauthorizedHttpException('You are requesting with an invalid credential.', 401);
+        throw new UnauthorizedHttpException('You are requesting with an invalid credential.', 401);
     }
 }

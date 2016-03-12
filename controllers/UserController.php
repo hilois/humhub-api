@@ -5,6 +5,7 @@ use Yii;
 use humhub\modules\api\controllers\BaseController;
 use humhub\modules\User\models\User;
 use yii\filters\auth\QueryParamAuth;
+use humhub\modules\user\models\forms\AccountLogin;
 
 class UserController extends BaseController
 {
@@ -23,5 +24,20 @@ class UserController extends BaseController
         }
 
         return $query->all();
+    }
+
+    public function actionLogin($username, $password) {
+        $auth = new AccountLogin();
+        $auth->username = $username;
+        $auth->password = $password;
+        try {
+            if ($auth->login()) {
+                return $auth->getUser();
+            } else {
+                return false;
+            }
+        } catch(Exception $e) {
+            return false;
+        }
     }
 }
