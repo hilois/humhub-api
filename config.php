@@ -5,6 +5,7 @@ return [
     'id' => 'api',
     'class' => 'humhub\modules\api\Module',
     'namespace' => 'humhub\modules\api',
+    'controllerNamespace' => 'humhub\modules\api',
     'urlManagerRules' => [
         ['class' => 'humhub\modules\space\components\UrlRule'],
       	'api/user' => 'api/user',
@@ -16,10 +17,12 @@ return [
       	'api/space' => 'api/space',
       	'api/post' => 'api/post',
       	'api/post/<id:\d+>' => 'api/post/view',
-      	'api/comment' => 'api/comment',
-      	'api/comment/<id:\d+>' => 'api/comment/view',
+      	'GET api/comment' => 'api/comment',
+        'POST api/comment' => 'api/comment/create',
+      	'GET api/comment/<id:\d+>' => 'api/comment/view',
       	'api/comment/post/<id:\d+>' => 'api/comment/post',
       	'DELETE api/comment/<id:\d+>' => 'api/comment/delete',
+        'PUT,PATCH api/comment/<id:\d+>' => 'api/comment/update',
     ],
     'events' => [
       [

@@ -102,6 +102,8 @@ The following endpoints are currently available.
 2. /api/comment/:id - returns a comment matching the comment id 
 3. /api/comment/post/:id - returns a list of comments for a particular post id
 4. DELETE /api/comment/:id - deletes a comment matching the comment id
+5. PATCH, PUT /api/comment/:id - Updates the specified comment.  Accepts JSON body as {"message": "Your Text Here"}
+6. POST /api/comment - Creates a comment. Only valid for Posts. Accepts JSON body as {"message": "Your Text Here", "post_id": value, "user_id": value}
 
 ## Installation
 1. Download the module and upload it to your modules directory >yourdomain.com>protected>modules
