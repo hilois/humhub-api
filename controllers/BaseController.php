@@ -7,10 +7,15 @@ use humhub\modules\post\models\Post;
 use yii\filters\auth\QueryParamAuth;
 use humhub\modules\api\models\ApiUser;
 use yii\web\UnauthorizedHttpException;
+use yii\filters\VerbFilter;
 
 class BaseController extends ActiveController
 {
     public function beforeAction($action) {
+        Yii::$app->request->parsers =  [
+          'application/json' => 'yii\web\JsonParser',
+        ];
+        Yii::$app->request->enableCsrfValidation = false;
         if (!parent::beforeAction($action)) {
             return false;
         }
