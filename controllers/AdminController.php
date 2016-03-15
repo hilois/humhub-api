@@ -9,10 +9,17 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * AdminController implements the CRUD actions for ApiUser model.
+ * AdminController implements an interface and actions for CRUD for the api_user table.
+  *
+ * @author petersmithca
  */
+
 class AdminController extends \humhub\modules\admin\components\Controller
 {
+    
+    /**
+     * @inheritdoc
+     */
     public function behaviors()
     {
         return [
@@ -117,7 +124,12 @@ class AdminController extends \humhub\modules\admin\components\Controller
         }
     }
 
-    function generateRandomString($length = 10) {
+    /**
+     * Generates a randomized string of characters of the length provided.
+     * @param integer $length
+     * @return string 
+     */
+    private function generateRandomString($length = 10) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';

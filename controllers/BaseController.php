@@ -9,8 +9,19 @@ use humhub\modules\api\models\ApiUser;
 use yii\web\UnauthorizedHttpException;
 use yii\filters\VerbFilter;
 
+/**
+ * BaseController implements authentication and sets up json parse for child classes.
+  *
+ * @author petersmithca
+ */
 class BaseController extends ActiveController
 {
+    
+    const MAX_ROWS = 1000;
+
+    /**
+     * @inheritdoc
+     */
     public function beforeAction($action) {
         Yii::$app->request->parsers =  [
           'application/json' => 'yii\web\JsonParser',

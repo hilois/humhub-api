@@ -4,12 +4,23 @@ namespace humhub\modules\api\controllers;
 use Yii;
 use humhub\modules\api\controllers\BaseController;
 use humhub\modules\Comment\models\Comment;
-use yii\filters\auth\QueryParamAuth;
+use yii\web\BadRequestHttpException;
+
+/**
+ * CommentController implements an interface and actions for CRUD for the coomenttable.
+  *
+ * @author petersmithca
+ */
 
 class CommentController extends BaseController
 {
     public $modelClass = 'humhub\modules\Comment\models\Comment';
 
+    /**
+     * Returns all comments for a particular post.
+     * @param integer $id
+     * @return mixed
+     */
     public function actionPost($id)
     {
         $request = Yii::$app->request;
@@ -24,15 +35,36 @@ class CommentController extends BaseController
         return $query->all();
     }
 
+    /**
+     * @inheritdoc
+     */
     public function actions()
     {
         $actions = parent::actions();
-        unset($actions['update'], $actions['create']);
+        unset($actions['update'], $actions['create'], $actions['index']);
         return $actions;
     }
 
+    /**
+     * Overrides Index functionality to sort comments and limit result set
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionIndex(){
+        $comment = Comment::find()->orderBy('updated_at DESC')->limit(self::MAX_ROWS)->all();
+        return $comment;
+    }
+
+    /**
+     * Overrides Update functionality.  Will only update message body.  Message to be included as POST body as JSON
+     * @param integer $id
+     * @return mixed
+     */
     public function actionUpdate($id){
         $comment = Comment::find()->where(['id' => $id])->one();
+        if (!Yii::$app->request->getBodyParam('message')) {
+            throw new BadRequestHttpException('`message` is required.');
+        }
         $message = Yii::$app->request->getBodyParam('message');
         $comment->message = $message;
         $comment->save();
@@ -44,8 +76,21 @@ class CommentController extends BaseController
 	    ]);
     }
 
+    /**
+     * Overrides Create functionality. message, post_id, and user_id to be included as POST body as JSON
+     * @return mixed
+     */
     public function actionCreate(){
         $comment = new Comment();
+        if (!Yii::$app->request->getBodyParam('message')) {
+            throw new BadRequestHttpException('`message` is required.');
+        }
+        if (!Yii::$app->request->getBodyParam('post_id')) {
+            throw new BadRequestHttpException('`post_id` is required.');
+        }
+        if (!Yii::$app->request->getBodyParam('user_id')) {
+            throw new BadRequestHttpException('`user_id` is required.');
+        }
         $message = Yii::$app->request->getBodyParam('message');
         $post_id = Yii::$app->request->getBodyParam('post_id');
         $user_id = Yii::$app->request->getBodyParam('user_id');
