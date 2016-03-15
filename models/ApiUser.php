@@ -47,27 +47,9 @@ class ApiUser extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getId()
-    {
-        return $this->id;
-    }
-
     public static function findIdentityByAccessToken($token, $type = null)
     {
         return static::findOne(['api_key' => $token, 'active' => 1]);
     }
 
-    public function getAuthKey()
-    {
-        return $this->api_key;
-    }
-    public function validateAuthKey($authKey)
-    {
-        return $this->getAuthKey() === $authKey;
-    }
-    
-    public static function findIdentity($id)
-    {
-        return static::findOne($id);
-    }
 }
