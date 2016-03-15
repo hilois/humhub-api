@@ -23,7 +23,7 @@ class Events extends \yii\base\Object
             'label' => 'Humhub Api',
             'url' => Url::toRoute('/api/admin/index'),
             'group' => 'settings',
-            'icon' => '<i class="fa fa-weixin"></i>',
+            'icon' => '<i class="fa fa-object-group"></i>',
             'isActive' => Yii::$app->controller->module && Yii::$app->controller->module->id == 'api' && Yii::$app->controller->id == 'admin',
             'sortOrder' => 650
         ]);

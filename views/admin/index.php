@@ -9,7 +9,7 @@ use humhub\widgets\GridView;
 
 ?>
 <div class="panel panel-default">
-    <div class="panel-heading"><?php '<strong>Manage</strong> Api Users'; ?></div>
+    <div class="panel-heading"><?php echo '<strong>Manage</strong> Api Users'; ?></div>
     <div class="panel-body">
     <?= \humhub\modules\api\widgets\ApiUserMenu::widget(); ?>
     <p />
@@ -35,7 +35,7 @@ use humhub\widgets\GridView;
                 'class' => 'yii\grid\ActionColumn',
                 'buttons' => [
                         'view' => function($url, $model) {
-                            return Html::a('<i class="fa fa-eye"></i>',Url::toRoute(['create']), ['class' => 'btn btn-primary btn-xs tt']);
+                            return Html::a('<i class="fa fa-eye"></i>',Url::toRoute(['view', 'id' => $model->id]), ['class' => 'btn btn-primary btn-xs tt']);
                         },
                         'update' => function($url, $model) {
                             return Html::a('<i class="fa fa-pencil"></i>', Url::toRoute(['update', 'id' => $model->id]), ['class' => 'btn btn-primary btn-xs tt']);

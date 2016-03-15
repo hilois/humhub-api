@@ -2,20 +2,16 @@
 
 use yii\helpers\Html;
 
-
-/* @var $this yii\web\View */
-/* @var $model humhub\modules\api\models\ApiUser */
-
-$this->title = 'Create Api User';
-$this->params['breadcrumbs'][] = ['label' => 'Api Users', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="api-user-create">
+<div class="panel panel-default">
+    <div class="panel-heading"><?php echo '<strong>Add</strong> Api User'; ?></div>
+    <div class="panel-body">
+        <?= \humhub\modules\admin\widgets\UserMenu::widget(); ?>
+        <p />
 
-    <h1><?= Html::encode($this->title) ?></h1>
+        <?php $form = \yii\widgets\ActiveForm::begin(); ?>
+        <?php echo $hForm->render($form); ?>
+        <?php \yii\widgets\ActiveForm::end(); ?>
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
-
+    </div>
 </div>

@@ -7,6 +7,7 @@ use humhub\modules\api\models\ApiUser;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use humhub\compat\HForm;
 
 /**
  * AdminController implements an interface and actions for CRUD for the api_user table.
@@ -59,7 +60,7 @@ class AdminController extends \humhub\modules\admin\components\Controller
 
     /**
      * Creates a new ApiUser model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * If creation is successful, the browser will be redirected to the 'index' page.
      * @return mixed
      */
     public function actionCreate()
@@ -67,13 +68,49 @@ class AdminController extends \humhub\modules\admin\components\Controller
         $model = new ApiUser();
         $model->api_key = $this->generateRandomString(24);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        // Add User Form
+        $definition['elements']['ApiUser'] = array(
+            'type' => 'form',
+            'title' => 'Api User',
+            'elements' => array(
+                'client' => array(
+                    'type' => 'text',
+                    'class' => 'form-control',
+                    'maxlength' => 255,
+                ),
+                'api_key' => array(
+                    'type' => 'text',
+                    'class' => 'form-control',
+                    'maxlength' => 25,
+                ),
+                'active' => array(
+                    'type' => 'text',
+                    'class' => 'form-control',
+                    'maxlength' => 1,
+                ),
+            ),
+        );
+        $definition['buttons'] = array(
+            'save' => array(
+                'type' => 'submit',
+                'class' => 'btn btn-primary',
+                'label' => 'Create account',
+            ),
+        );
+
+        $form = new HForm($definition);
+        $form->models['ApiUser'] = $model;
+
+        if ($form->submitted('save') && $form->validate()) {
+
+            $this->forcePostRequest();
+
+            if ($form->models['ApiUser']->save()) {
+                return $this->redirect(['index']);
+            }
         }
+
+        return $this->render('create', array('hForm' => $form));
     }
 
     /**

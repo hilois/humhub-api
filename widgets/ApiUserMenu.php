@@ -30,7 +30,7 @@ class ApiUserMenu extends \humhub\widgets\BaseMenu
             'label' => 'Add new Api User',
             'url' => Url::toRoute(['/api/admin/create']),
             'sortOrder' => 200,
-            'isActive' => (Yii::$app->controller->module && Yii::$app->controller->module->id == 'api' && Yii::$app->controller->id == 'admin' && Yii::$app->controller->action->id == 'add'),
+            'isActive' => (Yii::$app->controller->module && Yii::$app->controller->module->id == 'api' && Yii::$app->controller->id == 'admin' && Yii::$app->controller->action->id == 'create'),
         ));
 
         parent::init();
