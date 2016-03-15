@@ -30,7 +30,7 @@ class CommentController extends BaseController
         $query = Comment::find();
         
         if ($id) {
-             $query->where(['object_id' => $id]);
+             $query->where(['object_id' => $id])->orderBy('updated_at DESC');
         }
         return $query->all();
     }
