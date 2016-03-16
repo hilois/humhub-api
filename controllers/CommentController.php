@@ -41,7 +41,7 @@ class CommentController extends BaseController
     public function actions()
     {
         $actions = parent::actions();
-        unset($actions['update'], $actions['create'], $actions['index']);
+        unset($actions['update'], $actions['create'], $actions['index'], $actions['delete']);
         return $actions;
     }
 
@@ -61,7 +61,7 @@ class CommentController extends BaseController
      * @return mixed
      */
     public function actionUpdate($id){
-        $comment = Comment::find()->where(['id' => $id])->one();
+        $comment = \humhub\modules\comment\models\Comment::find()->where(['id' => $id])->one();
         if (!Yii::$app->request->getBodyParam('message')) {
             throw new BadRequestHttpException('`message` is required.');
         }
@@ -81,7 +81,7 @@ class CommentController extends BaseController
      * @return mixed
      */
     public function actionCreate(){
-        $comment = new Comment();
+        $comment = new \humhub\modules\comment\models\Comment();
         if (!Yii::$app->request->getBodyParam('message')) {
             throw new BadRequestHttpException('`message` is required.');
         }
@@ -105,5 +105,18 @@ class CommentController extends BaseController
 	        'statusCode' => 200,
 	        'data' => $comment,
 	    ]);
+    }
+
+    /**
+     * Overrides Delete functionality to use humhub models, which handle associated classes
+     * including walls 
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionDelete($id){
+        $post = \humhub\modules\comment\models\Comment::find()
+            ->where(['id' => $id])
+            ->one();
+        $post->delete();
     }
 }

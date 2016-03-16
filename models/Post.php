@@ -26,6 +26,6 @@ class Post extends \humhub\modules\post\models\Post
      */
     public function getComments()
     {
-        return $this->hasMany(Comment::className(), ['object_id' => 'id'])->where('{{comment}}.object_model = :post_type', [':post_type' => 'humhub\modules\post\models\Post']);
+        return $this->hasMany(Comment::className(), ['object_id' => 'id'])->andOnCondition(['{{comment}}.object_model' => 'humhub\modules\post\models\Post']);
     }
 }
