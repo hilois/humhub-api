@@ -95,6 +95,16 @@ The following endpoints are currently available.
 
 1. GET /api/post - returns a list of posts - optional parameter `eager=true` will return eager data relations including user and comments
 2. GET /api/post/:id - returns a post matching the post id, will include user and comments
+3. DELETE /api/post/:id - deletes a post matching the post id
+4. PATCH, PUT /api/post/:id - Updates the specified post.  Accepts JSON body as {"message": "Your Text Here"}
+5. POST /api/post - Creates a comment. Only valid for Posts. Accepts JSON body as 
+    {
+    "containerClass": "humhub\\modules\\space\\models\\Space",
+    "message": "test",
+    "user_id": 1,
+    "containerGuid": "5bfc6f65-f710-4eab-b488-dfa4e3dc551b",
+    "visibility": 0
+    }
 
 ### Comment
 
@@ -112,6 +122,10 @@ The following endpoints are currently available.
 
 ## Requirements
 This Module requires pretty urls to be enabled - see: https://www.humhub.org/docs/guide-admin-installation.html#4-fine-tuning
+
+## Known Issues:
+1. Cannot update a public post.  Will investigate after rest of data is complete.
+2. Adding posts is a bit ugly. The underlying code expects Ajax and has some post variables we need to duplicate
 
 ## TODO
 1. Define and implement desired read only endpoints
