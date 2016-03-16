@@ -93,14 +93,14 @@ The following endpoints are currently available.
 
 ### Post
 
-1. /api/post - returns a list of posts
-2. /api/post/:id - returns a post matching the post id 
+1. GET /api/post - returns a list of posts - optional parameter `eager=true` will return eager data relations including user and comments
+2. GET /api/post/:id - returns a post matching the post id, will include user and comments
 
 ### Comment
 
-1. /api/comment - returns a list of comments
-2. /api/comment/:id - returns a comment matching the comment id 
-3. /api/comment/post/:id - returns a list of comments for a particular post id
+1. GET /api/comment - returns a list of comments
+2. GET /api/comment/:id - returns a comment matching the comment id 
+3. GET /api/comment/post/:id - returns a list of comments for a particular post id
 4. DELETE /api/comment/:id - deletes a comment matching the comment id
 5. PATCH, PUT /api/comment/:id - Updates the specified comment.  Accepts JSON body as {"message": "Your Text Here"}
 6. POST /api/comment - Creates a comment. Only valid for Posts. Accepts JSON body as {"message": "Your Text Here", "post_id": value, "user_id": value}

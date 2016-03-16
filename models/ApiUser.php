@@ -47,7 +47,12 @@ class ApiUser extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function findIdentityByAccessToken($token, $type = null)
+    /**
+     * Implements authentication of the user api_key
+     * @param String $token
+     * @return mixed
+     */
+    public static function findIdentityByAccessToken($token)
     {
         return static::findOne(['api_key' => $token, 'active' => 1]);
     }

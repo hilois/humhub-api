@@ -9,7 +9,7 @@ use humhub\modules\user\models\forms\AccountLogin;
 
 class UserController extends BaseController
 {
-    public $modelClass = 'humhub\modules\User\models\User';
+    public $modelClass = 'humhub\modules\api\models\User';
 
     public function actionSearch($search)
     {

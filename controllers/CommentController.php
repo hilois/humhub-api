@@ -3,7 +3,7 @@ namespace humhub\modules\api\controllers;
 
 use Yii;
 use humhub\modules\api\controllers\BaseController;
-use humhub\modules\Comment\models\Comment;
+use humhub\modules\api\models\Comment;
 use yii\web\BadRequestHttpException;
 
 /**
@@ -14,7 +14,7 @@ use yii\web\BadRequestHttpException;
 
 class CommentController extends BaseController
 {
-    public $modelClass = 'humhub\modules\Comment\models\Comment';
+    public $modelClass = 'humhub\modules\api\models\Comment';
 
     /**
      * Returns all comments for a particular post.
