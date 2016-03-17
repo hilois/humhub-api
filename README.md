@@ -107,6 +107,7 @@ The following endpoints are currently available.
     "visibility": 0
     }
 ```
+
 ### Comment
 
 1. GET /api/comment - returns a list of comments
