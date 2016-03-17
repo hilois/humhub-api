@@ -93,7 +93,7 @@ The following endpoints are currently available.
 
 ### Post
 
-1. GET /api/post - returns a list of posts - optional parameter `eager=true` will return eager data relations including user and comments
+1. GET /api/post - returns a list of posts - optional parameter `eager=true` will return eager data relations including user and comments. optional paramter `space_id` will limit results to the particular space
 2. GET /api/post/:id - returns a post matching the post id, will include user and comments
 3. DELETE /api/post/:id - deletes a post matching the post id
 4. PATCH, PUT /api/post/:id - Updates the specified post.  Accepts JSON body as {"message": "Your Text Here"}

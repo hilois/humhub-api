@@ -21,23 +21,37 @@ class PostController extends BaseController
 
     /**
      * Overrides Index functionality to sort posts and limit result set.  Returns `eager` results
-     * including user and comments if eager parameter is set to true.
+     * including user and comments if eager parameter is set to true.  Returns only posts for a particular
+     * space if space_id is set
      * @param boolean $eager
+     * @param int $space_id
      * @return mixed
      */
-    public function actionIndex($eager = false){
-        $posts = Post::find()
-            ->innerJoinWith('user', $eager)
-            ->joinWith('comments', $eager)
-            ->orderBy('updated_at DESC')
-            ->limit(self::MAX_ROWS)
-            ->asArray()
-            ->all();
+    public function actionIndex($eager = false, $space_id = null){
+        if ($space_id) {
+            $posts = Post::find()
+                ->innerJoinWith('user', $eager)
+                ->joinWith('comments', $eager)
+                ->joinWith('content', false)
+                ->where(['{{content}}.space_id' => $space_id])
+                ->orderBy('updated_at DESC')
+                ->limit(self::MAX_ROWS)
+                ->asArray()
+                ->all();
+        } else {
+            $posts = Post::find()
+                ->innerJoinWith('user', $eager)
+                ->joinWith('comments', $eager)
+                ->orderBy('updated_at DESC')
+                ->limit(self::MAX_ROWS)
+                ->asArray()
+                ->all();
+        }
         return $posts;
     }
 
     /**
-     * Overrides View functionalityto return `eager` results
+     * Overrides View functionality to return `eager` results
      * including user and comments
      * @param integer $id
      * @return mixed
