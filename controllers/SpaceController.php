@@ -3,10 +3,15 @@ namespace humhub\modules\api\controllers;
 
 use Yii;
 use humhub\modules\api\controllers\BaseController;
-use humhub\modules\space\models\Space;
-use yii\filters\auth\QueryParamAuth;
 
 class SpaceController extends BaseController
 {
     public $modelClass = 'humhub\modules\space\models\Space';
+
+    public function actions()
+    {
+        $actions = parent::actions();
+        unset($actions['delete'], $actions['update'], $actions['create']);
+        return $actions;
+    }
 }

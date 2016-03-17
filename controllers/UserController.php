@@ -4,7 +4,6 @@ namespace humhub\modules\api\controllers;
 use Yii;
 use humhub\modules\api\controllers\BaseController;
 use humhub\modules\api\models\User;
-use yii\filters\auth\QueryParamAuth;
 use humhub\modules\user\models\forms\AccountLogin;
 
 class UserController extends BaseController
