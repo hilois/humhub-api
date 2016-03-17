@@ -131,10 +131,7 @@ This Module requires pretty urls to be enabled - see: https://www.humhub.org/doc
 2. Adding posts is a bit ugly. The underlying code expects Ajax and has some post variables we need to duplicate
 
 ## TODO
-1. Define and implement desired read only endpoints
-2. Define and implement all desired create endpoints
-3. Define and implement all desired Update endpoints
-4. Define and implement all desired Delete endpoints
+See Issues for list of TO-DO's
 
 
 ## Authors/Module Website
