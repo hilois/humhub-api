@@ -53,9 +53,44 @@ class AdminController extends \humhub\modules\admin\components\Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+         $model = $this->findModel($id);
+
+        // Add User Form
+        $definition['elements']['ApiUser'] = array(
+            'type' => 'form',
+            'title' => 'Api User',
+            'elements' => array(
+                'id' => array(
+                    'type' => 'text',
+                    'class' => 'form-control',
+                    'maxlength' => 20,
+                    'readonly' => 'true',
+                ),
+                'client' => array(
+                    'type' => 'text',
+                    'class' => 'form-control',
+                    'maxlength' => 255,
+                    'readonly' => 'true',
+                ),
+                'api_key' => array(
+                    'type' => 'text',
+                    'class' => 'form-control',
+                    'maxlength' => 25,
+                    'readonly' => 'true',
+                ),
+                'active' => array(
+                    'type' => 'text',
+                    'class' => 'form-control',
+                    'maxlength' => 1,
+                    'readonly' => 'true',
+                ),
+            ),
+        );
+        $definition['buttons'] = array();
+        $form = new HForm($definition);
+        $form->models['ApiUser'] = $model;
+
+        return $this->render('view', array('hForm' => $form));
     }
 
     /**
