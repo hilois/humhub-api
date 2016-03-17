@@ -3,13 +3,20 @@ namespace humhub\modules\api\controllers;
 
 use Yii;
 use humhub\modules\api\controllers\BaseController;
-use humhub\modules\User\models\User;
+use humhub\modules\api\models\User;
 use yii\filters\auth\QueryParamAuth;
 use humhub\modules\user\models\forms\AccountLogin;
 
 class UserController extends BaseController
 {
     public $modelClass = 'humhub\modules\api\models\User';
+
+    public function actions()
+    {
+        $actions = parent::actions();
+        unset($actions['index'], $actions['view'], $actions['delete'], $actions['update'], $actions['create']);
+        return $actions;
+    }
 
     public function actionSearch($search)
     {
@@ -39,5 +46,28 @@ class UserController extends BaseController
         } catch(Exception $e) {
             return false;
         }
+    }
+
+    public function actionIndex($eager = false){
+
+        $users = User::find()
+            ->innerJoinWith('profile', $eager)
+            ->asArray()
+            ->all();
+        return $users;
+    }
+
+    /**
+     * Overrides View functionality to return `eager` results
+     * for user profile
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionView($id){
+        $user = User::find()
+            ->innerJoinWith('profile')
+            ->asArray()
+            ->one();
+        return $user;
     }
 }

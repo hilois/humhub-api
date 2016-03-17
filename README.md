@@ -76,10 +76,10 @@ The following endpoints are currently available.
 
 ### User
 
-1. /api/user - returns a list of users
-2. /api/user/:id - returns a user matching the user id 
-3. /api/user/search/:text - returns a list of users with username matching the search criteria
-4. /api/user/login/:username/:password - not technically a REST call, but used to authenticate a user and get its id for use in REST calls.
+1. GET /api/user - returns a list of users - - optional parameter `eager=true` will return profile.
+2. GET /api/user/:id - returns a user matching the user id and profile
+3. GET /api/user/search/:text - returns a list of users with username matching the search criteria
+4. GET /api/user/login/:username/:password - not technically a REST call, but used to authenticate a user and get its id for use in REST calls.
 
 ### Profile
 
