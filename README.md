@@ -97,7 +97,7 @@ The following endpoints are currently available.
 2. GET /api/post/:id - returns a post matching the post id, will include user and comments
 3. DELETE /api/post/:id - deletes a post matching the post id
 4. PATCH, PUT /api/post/:id - Updates the specified post.  Accepts JSON body as {"message": "Your Text Here"}
-5. POST /api/post - Creates a comment. Only valid for Posts. Accepts JSON body as 
+5. POST /api/post - Creates a post. Only valid for Spaces. Uses underlying code to create post, so needs some non-obvious data. visibility must always = 0 and the containerClass as noted. containerGuid is the space's guid. Accepts JSON body as 
     {
     "containerClass": "humhub\\modules\\space\\models\\Space",
     "message": "test",
