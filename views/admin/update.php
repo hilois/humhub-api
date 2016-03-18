@@ -1,21 +1,19 @@
 <?php
 
 use yii\helpers\Html;
+use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model humhub\modules\api\models\ApiUser */
-
-$this->title = 'Update Api User: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Api Users', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="api-user-update">
+<div class="panel panel-default">
+    <div class="panel-heading"><?php echo '<strong>Update</strong> Api User'; ?></div>
+    <div class="panel-body">
+        <p />
 
-    <h1><?= Html::encode($this->title) ?></h1>
+        <?php $form = \yii\widgets\ActiveForm::begin(); ?>
+        <?php echo $hForm->render($form); ?>
+        <?php \yii\widgets\ActiveForm::end(); ?>
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
-
+    </div>
 </div>
