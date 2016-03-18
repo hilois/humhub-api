@@ -1,6 +1,6 @@
-# IN DEVELOPMENT - MORE ENDPOINTS WILL BE ADDED FREQUENTLY
-
 # [HumHub](https://github.com/humhub/humhub) Api
+
+## Pre-Release v 0.9
 
 This module is for HumHub Version 0.20 (Yii 2) and greater and cannot be used with HumHub Version 0.1x (Yii 1.1)
 
