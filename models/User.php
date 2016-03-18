@@ -13,11 +13,18 @@ use humhub\modules\api\models\Profile;
  */
 class User extends \humhub\modules\user\models\User
 {
+    
+	/**
+     * Identifies relationship between User and Post
+     */
     public function getPosts()
     {
         return $this->hasMany(Post::className(), ['created_by' => 'id']);
     }
 
+    /**
+     * Identifies relationship between User and Profile
+     */
     public function getProfile()
     {
         return $this->hasOne(Profile::className(), ['user_id' => 'id']);

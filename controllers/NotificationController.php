@@ -5,10 +5,18 @@ use Yii;
 use humhub\modules\api\controllers\BaseController;
 use humhub\modules\notification\models\Notification;
 
+/**
+ * NotificationController implements an interface and actions for listing notifications.
+  *
+ * @author petersmithca
+ */
 class NotificationController extends BaseController
 {
     public $modelClass = 'humhub\modules\notification\models\Notification';
 
+    /**
+     * @inheritdoc
+     */
     public function actions()
     {
         $actions = parent::actions();
@@ -18,7 +26,6 @@ class NotificationController extends BaseController
 
     /**
      * Overrides Index functionality to return only unseeen notifications
-     * @param integer $id
      * @return mixed
      */
     public function actionIndex(){

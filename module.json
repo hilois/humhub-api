@@ -3,7 +3,7 @@
     "name": "API",
     "description": "Adds REST EPI Endpoints.",
     "keywords": ["api", "rest"],
-    "version": "0.1.0",
+    "version": "0.9.0",
     "humhub": {
         "minVersion": "0.20"
     }

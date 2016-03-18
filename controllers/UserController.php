@@ -10,6 +10,9 @@ class UserController extends BaseController
 {
     public $modelClass = 'humhub\modules\api\models\User';
 
+    /**
+     * @inheritdoc
+     */
     public function actions()
     {
         $actions = parent::actions();
@@ -17,6 +20,11 @@ class UserController extends BaseController
         return $actions;
     }
 
+    /**
+     * Allows searching users by user name, returning a list of matches.
+     * @param string $search
+     * @return mixed
+     */
     public function actionSearch($search)
     {
         $request = Yii::$app->request;
@@ -32,6 +40,13 @@ class UserController extends BaseController
         return $query->all();
     }
 
+    /**
+     * Login end point, which will return a user matching the passes uername and password
+     * including walls 
+     * @param string $username
+     * @param string $password
+     * @return mixed
+     */
     public function actionLogin($username, $password) {
         $auth = new AccountLogin();
         $auth->username = $username;
@@ -47,6 +62,12 @@ class UserController extends BaseController
         }
     }
 
+    /**
+     * Overrides Index functionality to return a list of users
+     * will include the user's profile if the optional `eager` paramter is true
+     * @param boolean $eager
+     * @return mixed
+     */
     public function actionIndex($eager = false){
 
         $users = User::find()
