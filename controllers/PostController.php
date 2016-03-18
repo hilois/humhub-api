@@ -9,6 +9,7 @@ use yii\web\BadRequestHttpException;
 class PostController extends BaseController
 {
     public $modelClass = 'humhub\modules\api\models\Post';
+    
     /**
      * @inheritdoc
      */

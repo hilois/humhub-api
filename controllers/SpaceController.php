@@ -8,6 +8,9 @@ class SpaceController extends BaseController
 {
     public $modelClass = 'humhub\modules\space\models\Space';
 
+    /**
+     * @inheritdoc
+     */
     public function actions()
     {
         $actions = parent::actions();

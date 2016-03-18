@@ -7,7 +7,7 @@ use humhub\modules\api\models\Comment;
 use yii\web\BadRequestHttpException;
 
 /**
- * CommentController implements an interface and actions for CRUD for the coomenttable.
+ * CommentController implements an interface and actions for CRUD for the cooment table.
   *
  * @author petersmithca
  */
@@ -47,7 +47,6 @@ class CommentController extends BaseController
 
     /**
      * Overrides Index functionality to sort comments and limit result set
-     * @param integer $id
      * @return mixed
      */
     public function actionIndex(){

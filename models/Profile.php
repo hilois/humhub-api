@@ -6,12 +6,16 @@ use Yii;
 use humhub\modules\api\models\User;
 
 /**
- * User model extends humhub User model to implement relationships.
+ * Profile model extends humhub Profile model to implement relationships.
   *
  * @author petersmithca
  */
 class Profile extends \humhub\modules\user\models\Profile
 {
+    
+	/**
+     * Identifies relationship between Profile and User
+     */
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
