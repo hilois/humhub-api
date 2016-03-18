@@ -91,6 +91,10 @@ The following endpoints are currently available.
 1. /api/space - returns a list of spaces
 2. /api/space/:id - returns a space matching the space id 
 
+### Notification
+
+1. /api/notification - returns a list of unseeen notifications
+
 ### Post
 
 1. GET /api/post - returns a list of posts - optional parameter `eager=true` will return eager data relations including user and comments. optional paramter `space_id` will limit results to the particular space

@@ -8,13 +8,13 @@ return [
     'controllerNamespace' => 'humhub\modules\api',
     'urlManagerRules' => [
         ['class' => 'humhub\modules\space\components\UrlRule'],
-      	'api/user' => 'api/user',
-      	'api/user/<id:\d+>' => 'api/user/view',
-      	'api/user/search/<search:.+>' => 'api/user/search',
-        'api/user/login/<username:.+>/<password:.+>' => 'api/user/login',
-      	'api/profile' => 'api/profile',
-      	'api/profile/<id:\d+>' => 'api/profile/view',
-      	'api/space' => 'api/space',
+      	'GET api/user' => 'api/user',
+      	'GET api/user/<id:\d+>' => 'api/user/view',
+      	'GET api/user/search/<search:.+>' => 'api/user/search',
+        'GET api/user/login/<username:.+>/<password:.+>' => 'api/user/login',
+      	'GET api/profile' => 'api/profile',
+      	'GET api/profile/<id:\d+>' => 'api/profile/view',
+      	'GET api/space' => 'api/space',
       	'GET api/post' => 'api/post',
       	'GET api/post/<id:\d+>' => 'api/post/view',
         'POST api/post' => 'api/post/create',
@@ -26,6 +26,7 @@ return [
       	'api/comment/post/<id:\d+>' => 'api/comment/post',
       	'DELETE api/comment/<id:\d+>' => 'api/comment/delete',
         'PUT,PATCH api/comment/<id:\d+>' => 'api/comment/update',
+        'GET api/notification' => 'api/notification',
     ],
     'events' => [
       [
