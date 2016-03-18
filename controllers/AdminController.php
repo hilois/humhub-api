@@ -150,21 +150,62 @@ class AdminController extends \humhub\modules\admin\components\Controller
 
     /**
      * Updates an existing ApiUser model.
-     * If update is successful, the browser will be redirected to the 'view' page.
+     * If update is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+        // Add User Form
+        $definition['elements']['ApiUser'] = array(
+            'type' => 'form',
+            'title' => 'Api User',
+            'elements' => array(
+                'id' => array(
+                    'type' => 'text',
+                    'class' => 'form-control',
+                    'maxlength' => 20,
+                    'readonly' => 'true',
+                ),
+                'client' => array(
+                    'type' => 'text',
+                    'class' => 'form-control',
+                    'maxlength' => 255,
+                ),
+                'api_key' => array(
+                    'type' => 'text',
+                    'class' => 'form-control',
+                    'maxlength' => 25,
+                ),
+                'active' => array(
+                    'type' => 'text',
+                    'class' => 'form-control',
+                    'maxlength' => 1,
+                ),
+            ),
+        );
+        $definition['buttons'] = array(
+            'save' => array(
+                'type' => 'submit',
+                'class' => 'btn btn-primary',
+                'label' => 'Update Account',
+            ),
+        );
+        $form = new HForm($definition);
+        $form->models['ApiUser'] = $model;
+
+        if ($form->submitted('save') && $form->validate()) {
+
+            $this->forcePostRequest();
+
+            if ($form->models['ApiUser']->save()) {
+                return $this->redirect(['index']);
+            }
         }
+
+        return $this->render('update', array('hForm' => $form));
     }
 
     /**
