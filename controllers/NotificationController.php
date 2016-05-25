@@ -20,7 +20,7 @@ class NotificationController extends BaseController
     public function actions()
     {
         $actions = parent::actions();
-        unset($actions['delete'], $actions['update'], $actions['create'], $actions['view'], $actions['index']);
+        unset($actions['delete'], $actions['update'], $actions['view'], $actions['create'], $actions['index']);
         return $actions;
     }
 
@@ -29,7 +29,20 @@ class NotificationController extends BaseController
      * @return mixed
      */
     public function actionIndex(){
-        $comment = Notification::find()->where(['seen' => 0])->limit(self::MAX_ROWS)->all();
-        return $comment;
+        $notifications = Notification::find()->where(['seen' => 0])->limit(self::MAX_ROWS)->all();
+        return $notifications;
+    }
+
+    /**
+     * Overrides View functionality
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionView($id){
+        $notifications = Notification::find()
+                         ->where(['seen' => 0, 'user_id' => $id])
+                         ->limit(self::MAX_ROWS)
+                         ->all();
+        return $notifications;
     }
 }

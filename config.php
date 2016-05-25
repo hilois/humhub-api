@@ -27,6 +27,7 @@ return [
       	'DELETE api/comment/<id:\d+>' => 'api/comment/delete',
         'PUT,PATCH api/comment/<id:\d+>' => 'api/comment/update',
         'GET api/notification' => 'api/notification',
+        'GET api/notification/<id:\d+>' => 'api/notification/view',
     ],
     'events' => [
       [
