@@ -94,6 +94,7 @@ The following endpoints are currently available.
 ### Notification
 
 1. /api/notification - returns a list of unseeen notifications
+2. /api/notification/:id - returns a list of unseeen notifications for the user id 
 
 ### Post
 
