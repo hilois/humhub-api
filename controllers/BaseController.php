@@ -16,7 +16,7 @@ use yii\filters\VerbFilter;
  */
 class BaseController extends ActiveController
 {
-    
+
     const MAX_ROWS = 1000;
 
     /**
@@ -30,14 +30,22 @@ class BaseController extends ActiveController
         if (!parent::beforeAction($action)) {
             return false;
         }
+
         $req = Yii::$app->request;
-        parse_str($req->queryString);
+        //parse_str($req->queryString);
+
+        /* grab header - custom DF */
+        $headers = $req->headers;
+
+        $access_token = $headers->get('Authorization');
+        $access_token = explode("Bearer ",$access_token)[1];
+
         if (!isset($access_token)) {
             throw new UnauthorizedHttpException('Access unavailable without access_token.', 401);
         }
         if (ApiUser::findIdentityByAccessToken($access_token)) {
             return true;
-        } 
+        }
         throw new UnauthorizedHttpException('You are requesting with an invalid credential.', 401);
     }
 }
